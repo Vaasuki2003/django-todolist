@@ -66,7 +66,7 @@ def new_todolist(request):
 
     return redirect("lists:index")
 
-
+@login_required
 def add_todolist(request):
     if request.method == "POST":
         form = TodoListForm(request.POST)
