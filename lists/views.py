@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
+from django.contrib.auth.decorators import login_required
 from lists.forms import TodoForm, TodoListForm
 from lists.models import Todo, TodoList
 
@@ -19,7 +20,7 @@ def todolist(request, todolist_id):
         request, "lists/todolist.html", {"todolist": todolist, "form": TodoForm()}
     )
 
-
+@login_required
 def add_todo(request, todolist_id):
     if request.method == "POST":
         form = TodoForm(request.POST)
